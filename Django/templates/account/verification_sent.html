@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <!-- //Meta tag Keywords -->
+    <title>F1Teams</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- //Meta tag Keywords -->
+    <!-- Custom-Files -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <!-- Bootstrap-Core-CSS -->
+    <!--/ Style-CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all">
+    <!--// Style-CSS -->
+    <!-- font-awesome-icons -->
+    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+    <!-- //font-awesome-icons -->
+  <!-- /Fonts -->
+    <link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet">
+    <!-- //Fonts -->
+</head>
+
+<body>
+
+   <div id="page" class="page">
+    <div class="main-banner inner bg bg1" id="home" style="background: #ff0c00">
+        <!-- header -->
+        <header class="header">
+            <div class="container-fluid px-lg-5">
+                <!-- nav -->
+                <nav class="py-4">
+                    <div id="logo">
+                        <h1><a href="index.html" class="editContent"
+                               style="outline: none; outline-offset: -2px; cursor: inherit; color: rgb(255, 255, 255); font-size: 40px; background-color: rgba(0, 0, 0, 0); font-family: &quot;Source Sans Pro&quot;, sans-serif;">F1 Teams</a>
+                        </h1>
+                    </div>
+
+                    <label for="drop" class="toggle">Menu</label>
+                    <input type="checkbox" id="drop">
+                    <ul class="menu mt-2">
+                        <li><a href="index.html" style="color: #fafafa;" >Главная</a></li>
+                        <li>
+                            {% if user.is_authenticated %}
+                            <a href="{% url 'account_logout' %}"
+                               style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">
+                                Выход
+                            </a>
+                            {% else %}
+                            <a href="{% url 'account_login' %}"
+                               style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">
+                                Вход
+                            </a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </nav>
+                <!-- //nav -->
+            </div>
+        </header>
+    </div>
+       <ol class="breadcrumb editContent">
+            <li class="breadcrumb-item">
+                <a href="index.html" class="editContent">Home</a>
+            </li>
+            <li class="breadcrumb-item active editContent">Single Page</li>
+       </ol>
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Verify Your E-mail Address" %}{% endblock %}
+
+{% block content %}
+    <h1>{% trans "Verify Your E-mail Address" %}</h1>
+
+    <p>{% blocktrans %}We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please contact us if you do not receive it within a few minutes.{% endblocktrans %}</p>
+
+{% endblock %}
+
+   </div>
+</body>
+</html>
